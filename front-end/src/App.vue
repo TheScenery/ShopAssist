@@ -1,10 +1,13 @@
 <script setup>
 import { RouterView } from 'vue-router'
+import Header from './components/header/Header.vue'
 </script>
 
 <template>
   <el-container class="common-layout">
-      <el-header>Header</el-header>
+      <el-header>
+        <Header></Header>
+      </el-header>
       <el-container>
         <el-aside width="200px">Aside</el-aside>
         <el-container>
