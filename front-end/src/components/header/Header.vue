@@ -19,7 +19,7 @@ import IconGithub from '../icons/IconGithub.vue';
 <style scoped lang="scss">
 .sa-layout-header-container {
     display: flex;
-    padding: 16px 24px;
+    padding: 8px 0;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid var(--color-border);
