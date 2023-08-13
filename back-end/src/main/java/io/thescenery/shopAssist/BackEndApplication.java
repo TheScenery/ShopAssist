@@ -1,4 +1,4 @@
-package com.example.backend;
+package io.thescenery.shopAssist;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
