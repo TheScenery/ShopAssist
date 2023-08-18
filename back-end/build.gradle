@@ -18,6 +18,10 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2")
+	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+	implementation 'mysql:mysql-connector-java:8.0.33'
+
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
