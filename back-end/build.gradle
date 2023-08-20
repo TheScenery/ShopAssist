@@ -24,6 +24,9 @@ dependencies {
 	implementation 'org.flywaydb:flyway-core:9.21.1'
 	// https://mvnrepository.com/artifact/org.flywaydb/flyway-mysql
 	implementation 'org.flywaydb:flyway-mysql:9.21.1'
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-web
+	implementation 'org.springframework.security:spring-security-web:6.1.2'
+
 
 
 
