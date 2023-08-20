@@ -1,4 +1,4 @@
-package io.thescenery.shopAssist.pojo;
+package io.thescenery.shopAssist.user.entity;
 
 public class User {
     private int id;
