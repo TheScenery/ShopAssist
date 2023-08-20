@@ -15,12 +15,29 @@ public class UserServiceImpl implements IUserService {
         this.userMapper = userMapper;
     }
 
-    @Override
-    public UserInfoVo getUserById(int id) {
+    private void exceptionWhenUserNull(User user) {
+        if (user == null) {
+            throw new RuntimeException("can not find user");
+        }
+    }
+
+    private UserInfoVo userEntityToUserVo(User user) {
+        exceptionWhenUserNull(user);
         UserInfoVo userInfoVo = new UserInfoVo();
-        User user = userMapper.getUserById(id);
         userInfoVo.setId(user.getId());
         userInfoVo.setName(user.getName());
         return userInfoVo;
+    }
+
+    @Override
+    public UserInfoVo getUserById(int id) {
+        return userEntityToUserVo(userMapper.getUserById(id));
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        User user = userMapper.getUserByEmail(email);
+        exceptionWhenUserNull(user);
+        return user;
     }
 }

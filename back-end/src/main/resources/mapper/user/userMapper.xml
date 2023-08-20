@@ -9,4 +9,10 @@
         WHERE id = #{id} AND is_deleted = 0
         LIMIT 0,1
     </select>
+    <select id="getUserByEmail" resultType="io.thescenery.shopAssist.user.entity.User">
+        SELECT *
+        FROM t_user
+        WHERE email = #{email} AND is_deleted = 0
+        LIMIT 0,1
+    </select>
 </mapper>

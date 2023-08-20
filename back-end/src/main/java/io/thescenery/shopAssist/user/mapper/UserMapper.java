@@ -7,4 +7,6 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface UserMapper {
     User getUserById(@Param("id") int id);
+
+    User getUserByEmail(@Param("email") String email);
 }
