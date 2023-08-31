@@ -5,6 +5,7 @@ import lombok.*;
 @Data
 @Builder
 public class LoginRequestDto {
-    private String email;
-    private String password;
+
+  private String email;
+  private String password;
 }

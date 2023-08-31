@@ -12,18 +12,19 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 public class WebSecurityConfig {
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 
-    @Bean
-    public SecurityFilterChain authFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/auth/login").permitAll()
-                .anyRequest().authenticated()
-        ).httpBasic(withDefaults()).csrf(AbstractHttpConfigurer::disable);
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
 
-        return http.build();
-    }
+  @Bean
+  public SecurityFilterChain authFilterChain(HttpSecurity http) throws Exception {
+    http.authorizeHttpRequests(authorize -> authorize
+        .requestMatchers("/auth/login").permitAll()
+        .anyRequest().authenticated()
+    ).httpBasic(withDefaults()).csrf(AbstractHttpConfigurer::disable);
+
+    return http.build();
+  }
 }

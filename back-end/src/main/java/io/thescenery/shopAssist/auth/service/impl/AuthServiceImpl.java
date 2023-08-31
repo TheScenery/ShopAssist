@@ -10,17 +10,19 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthServiceImpl implements IAuthService {
-    @Resource
-    private IUserService userService;
 
-    @Resource
-    private IPasswordService passwordService;
-    @Override
-    public User loginWithPassword(LoginRequestDto loginRequestDto) {
-        User user = userService.getUserByEmail(loginRequestDto.getEmail());
-        if (passwordService.match(loginRequestDto.getPassword(), user.getPassword())) {
-            return user;
-        }
-        return null;
+  @Resource
+  private IUserService userService;
+
+  @Resource
+  private IPasswordService passwordService;
+
+  @Override
+  public User loginWithPassword(LoginRequestDto loginRequestDto) {
+    User user = userService.getUserByEmail(loginRequestDto.getEmail());
+    if (passwordService.match(loginRequestDto.getPassword(), user.getPassword())) {
+      return user;
     }
+    return null;
+  }
 }

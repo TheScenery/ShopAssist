@@ -8,33 +8,34 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements IUserService {
-    private final UserMapper userMapper;
+
+  private final UserMapper userMapper;
 
 
-    public UserServiceImpl(UserMapper userMapper) {
-        this.userMapper = userMapper;
+  public UserServiceImpl(UserMapper userMapper) {
+    this.userMapper = userMapper;
+  }
+
+  private void exceptionWhenUserNull(User user) {
+    if (user == null) {
+      throw new RuntimeException("can not find user");
     }
+  }
 
-    private void exceptionWhenUserNull(User user) {
-        if (user == null) {
-            throw new RuntimeException("can not find user");
-        }
-    }
+  private UserInfoVo userEntityToUserVo(User user) {
+    exceptionWhenUserNull(user);
+    return UserInfoVo.builder().id(user.getId()).name(user.getName()).build();
+  }
 
-    private UserInfoVo userEntityToUserVo(User user) {
-        exceptionWhenUserNull(user);
-        return UserInfoVo.builder().id(user.getId()).name(user.getName()).build();
-    }
+  @Override
+  public UserInfoVo getUserById(int id) {
+    return userEntityToUserVo(userMapper.getUserById(id));
+  }
 
-    @Override
-    public UserInfoVo getUserById(int id) {
-        return userEntityToUserVo(userMapper.getUserById(id));
-    }
-
-    @Override
-    public User getUserByEmail(String email) {
-        User user = userMapper.getUserByEmail(email);
-        exceptionWhenUserNull(user);
-        return user;
-    }
+  @Override
+  public User getUserByEmail(String email) {
+    User user = userMapper.getUserByEmail(email);
+    exceptionWhenUserNull(user);
+    return user;
+  }
 }
