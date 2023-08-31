@@ -6,3 +6,6 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
+
+token:
+  secretKey: "This is token secret key"

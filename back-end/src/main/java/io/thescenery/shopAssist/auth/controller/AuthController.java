@@ -1,8 +1,14 @@
 package io.thescenery.shopAssist.auth.controller;
 
 import io.thescenery.shopAssist.auth.dto.LoginRequestDto;
+import io.thescenery.shopAssist.auth.dto.LoginResponseDto;
 import io.thescenery.shopAssist.auth.service.IAuthService;
+import io.thescenery.shopAssist.auth.service.ITokenService;
 import io.thescenery.shopAssist.shared.security.IPasswordService;
+import io.thescenery.shopAssist.user.entity.User;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -10,9 +16,12 @@ public class AuthController {
     private final IPasswordService passwordService;
     private final IAuthService authService;
 
-    public AuthController(IPasswordService passwordService, IAuthService authService) {
+    private final ITokenService tokenService;
+
+    public AuthController(IPasswordService passwordService, IAuthService authService, ITokenService tokenService) {
         this.passwordService = passwordService;
         this.authService = authService;
+        this.tokenService = tokenService;
     }
 
     @GetMapping("/auth/encode-password")
@@ -21,10 +30,11 @@ public class AuthController {
     }
 
     @PostMapping("/auth/login")
-    public long login(@RequestBody LoginRequestDto loginData) {
-        if (authService.loginWithPassword(loginData)) {
-            return 0;
+    public LoginResponseDto login(@RequestBody LoginRequestDto loginData) {
+        User user = authService.loginWithPassword(loginData);
+        if (user != null) {
+           return new LoginResponseDto(tokenService.getToken(user.getId()));
         }
-        return -1;
+        return null;
     }
 }
