@@ -6,9 +6,6 @@ import io.thescenery.shopAssist.auth.service.IAuthService;
 import io.thescenery.shopAssist.auth.service.ITokenService;
 import io.thescenery.shopAssist.shared.security.IPasswordService;
 import io.thescenery.shopAssist.user.entity.User;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -33,7 +30,7 @@ public class AuthController {
     public LoginResponseDto login(@RequestBody LoginRequestDto loginData) {
         User user = authService.loginWithPassword(loginData);
         if (user != null) {
-           return new LoginResponseDto(tokenService.getToken(user.getId()));
+           return LoginResponseDto.builder().token(tokenService.getToken(user.getId())).build();
         }
         return null;
     }

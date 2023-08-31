@@ -1,17 +1,9 @@
 package io.thescenery.shopAssist.auth.dto;
 
+import lombok.*;
+
+@Data
+@Builder
 public class LoginResponseDto {
     private String token;
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public LoginResponseDto(String token) {
-        this.token = token;
-    }
 }
