@@ -3,9 +3,9 @@ package io.thescenery.shopAssist.auth.controller;
 import io.thescenery.shopAssist.auth.dto.LoginRequestDto;
 import io.thescenery.shopAssist.auth.dto.LoginResponseDto;
 import io.thescenery.shopAssist.auth.service.IAuthService;
-import io.thescenery.shopAssist.auth.service.ITokenService;
 import io.thescenery.shopAssist.shared.security.IPasswordService;
 import io.thescenery.shopAssist.user.entity.User;
+import io.thescenery.shopAssist.util.JWTUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,13 +16,9 @@ public class AuthController {
   private final IPasswordService passwordService;
   private final IAuthService authService;
 
-  private final ITokenService tokenService;
-
-  public AuthController(IPasswordService passwordService, IAuthService authService,
-      ITokenService tokenService) {
+  public AuthController(IPasswordService passwordService, IAuthService authService) {
     this.passwordService = passwordService;
     this.authService = authService;
-    this.tokenService = tokenService;
   }
 
   @GetMapping("/auth/encode-password")
@@ -35,7 +31,7 @@ public class AuthController {
     User user = authService.loginWithPassword(loginData);
     if (user != null) {
       log.info("User login, userID: {}", user.getId());
-      return LoginResponseDto.builder().token(tokenService.getToken(user.getId())).build();
+      return LoginResponseDto.builder().token(JWTUtil.generateToken(user.getId())).build();
     }
     return null;
   }
