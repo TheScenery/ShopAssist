@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { getToken } from '@/util/token';
-import Router from '@/router';
 import router from '@/router';
 
 const httpClient = axios.create({
