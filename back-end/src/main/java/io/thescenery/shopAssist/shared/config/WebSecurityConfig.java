@@ -26,7 +26,7 @@ public class WebSecurityConfig {
   @Bean
   @Order(1)
   public SecurityFilterChain noAuthFilterChain(HttpSecurity http) throws Exception {
-    http.securityMatcher("/auth/login").authorizeHttpRequests(authorize -> authorize
+    http.securityMatcher("/api/auth/login").authorizeHttpRequests(authorize -> authorize
         .anyRequest().permitAll()
     ).csrf(AbstractHttpConfigurer::disable);
 
