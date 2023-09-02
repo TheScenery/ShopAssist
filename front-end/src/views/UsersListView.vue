@@ -1,9 +1,9 @@
 <script setup>
-import UsersList from '../components/users-list/UsersList.vue'
+import UsersList from '../components/users-list/UsersList.vue';
 </script>
 
 <template>
   <main>
-    <UsersList/>
+    <UsersList />
   </main>
 </template>

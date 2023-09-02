@@ -1,13 +1,13 @@
 <script setup>
-import {RouterView} from 'vue-router'
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
-  <el-container>
-    <RouterView/>
-  </el-container>
+  <el-main>
+    <RouterView />
+  </el-main>
 </template>
 
-<style scoped lang="scss">
+<style scoped lang='scss'>
 
 </style>

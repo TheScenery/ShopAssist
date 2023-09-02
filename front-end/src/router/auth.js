@@ -1,9 +1,9 @@
-import LoginView from "@/views/LoginView.vue";
+import LoginView from '@/views/LoginView.vue';
 
 export const AuthRoutes = [
   {
     path: 'login',
     name: 'login',
-    component: LoginView,
+    component: LoginView
   }
-]
+];

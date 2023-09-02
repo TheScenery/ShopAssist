@@ -1,5 +1,5 @@
-import UsersListView from "@/views/UsersListView.vue";
+import UsersListView from '@/views/UsersListView.vue';
 
 export const SystemRoutes = [
-  {path: 'user-management', name: 'userManagement', component: UsersListView}
-]
+  { path: 'user-management', name: 'userManagement', component: UsersListView }
+];

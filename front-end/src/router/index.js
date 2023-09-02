@@ -1,8 +1,8 @@
-import {createRouter, createWebHistory} from 'vue-router'
-import {AuthRoutes} from "@/router/auth";
-import FullLayout from "@/layout/FullLayout.vue";
-import MainLayout from "@/layout/MainLayout.vue";
-import {SystemRoutes} from "@/router/system";
+import { createRouter, createWebHistory } from 'vue-router';
+import { AuthRoutes } from '@/router/auth';
+import FullLayout from '@/layout/FullLayout.vue';
+import MainLayout from '@/layout/MainLayout.vue';
+import { SystemRoutes } from '@/router/system';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,10 +29,10 @@ const router = createRouter({
       name: 'main',
       redirect: '/user-management',
       children: [
-        ...SystemRoutes,
+        ...SystemRoutes
       ]
-    },
+    }
   ]
-})
+});
 
-export default router
+export default router;
