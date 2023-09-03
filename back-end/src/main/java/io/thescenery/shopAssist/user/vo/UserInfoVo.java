@@ -9,4 +9,5 @@ public class UserInfoVo {
 
   private int id;
   private String name;
+  private String avatar;
 }

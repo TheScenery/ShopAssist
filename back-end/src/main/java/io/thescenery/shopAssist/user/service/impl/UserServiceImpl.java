@@ -24,7 +24,8 @@ public class UserServiceImpl implements IUserService {
 
   private UserInfoVo userEntityToUserVo(User user) {
     exceptionWhenUserNull(user);
-    return UserInfoVo.builder().id(user.getId()).name(user.getName()).build();
+    return UserInfoVo.builder().id(user.getId()).name(user.getName()).avatar(user.getAvatar())
+        .build();
   }
 
   @Override

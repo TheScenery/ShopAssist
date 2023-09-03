@@ -3,6 +3,8 @@ package io.thescenery.shopAssist.util;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.Claim;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -29,13 +31,23 @@ public class JWTUtil {
         .sign(getAlgorithm());
   }
 
+  public static DecodedJWT validateToken(String token) {
+    return JWT.require(getAlgorithm()).build().verify(token);
+  }
+
   public static boolean verifyToken(String token) {
     try {
-      JWT.require(getAlgorithm()).build().verify(token);
+      validateToken(token);
     } catch (JWTVerificationException e) {
       log.error(e.getMessage());
       return false;
     }
     return true;
+  }
+
+  public static int getUserIdFromToken(String token) {
+    DecodedJWT decodedJWT = validateToken(token);
+    Claim userIdClaim = decodedJWT.getClaim("userId");
+    return userIdClaim.asInt();
   }
 }
