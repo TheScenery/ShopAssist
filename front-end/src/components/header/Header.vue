@@ -1,20 +1,25 @@
 <script setup>
-import IconGithub from '../icons/IconGithub.vue';
+import { onMounted, ref } from 'vue';
+import { getCurrentUserInfo } from '@/api/auth';
+
+const currentUser = ref({ avatar: '', name: '' });
+onMounted(async () => {
+  const userInfo = await getCurrentUserInfo();
+  currentUser.value = userInfo;
+});
+
 </script>
 <template>
   <div class='sa-layout-header-container'>
     <div class='left-part'>
       <el-image
         style='width: 100px; height: 24px'
-        src='https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+        src='https://randomuser.me/api/portraits/lego/2.jpg'
         :fit='fit'
       />
     </div>
     <div class='right-part'>
-      <el-avatar src='https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png' />
-      <el-link href='https://github.com/TheScenery/ShopAssist' :underline='false'>
-        <IconGithub class='github-icon' />
-      </el-link>
+      <el-avatar :src='currentUser.avatar' />
     </div>
   </div>
 </template>
