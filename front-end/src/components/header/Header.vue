@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { getCurrentUserInfo } from '@/api/auth';
+import logo from '@/assets/header-vue-js.jpg';
 
 const currentUser = ref({ avatar: '', name: '' });
 onMounted(async () => {
@@ -13,9 +14,8 @@ onMounted(async () => {
   <div class='sa-layout-header-container'>
     <div class='left-part'>
       <el-image
-        style='width: 100px; height: 24px'
-        src='https://randomuser.me/api/portraits/lego/2.jpg'
-        :fit='fit'
+        style='width: 180px; height: 34px'
+        :src='logo'
       />
     </div>
     <div class='right-part'>
