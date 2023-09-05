@@ -30,6 +30,6 @@ public class UserController {
   UserInfoVo getCurrentUser() {
     Authentication authentication = SecurityContextHolder.getContext()
         .getAuthentication();
-    return userService.getUserById((Integer) authentication.getPrincipal());
+    return userService.getUserById((Long) authentication.getPrincipal());
   }
 }

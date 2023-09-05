@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -33,7 +32,7 @@ public class JWTTokenFilter extends OncePerRequestFilter {
     String token = tokenHeader.substring(tokenPrefix.length());
 
     if (JWTUtil.verifyToken(token)) {
-      int userIdFromToken = JWTUtil.getUserIdFromToken(token);
+      long userIdFromToken = JWTUtil.getUserIdFromToken(token);
       Authentication authentication =
           new UsernamePasswordAuthenticationToken(userIdFromToken, token,
               Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));

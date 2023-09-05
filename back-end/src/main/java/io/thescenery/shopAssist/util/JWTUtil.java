@@ -24,7 +24,7 @@ public class JWTUtil {
     return Algorithm.HMAC256(secretKey);
   }
 
-  public static String generateToken(int userId) {
+  public static String generateToken(long userId) {
     return JWT.create()
         .withClaim("userId", userId)
         .withClaim("timeStamp", System.currentTimeMillis())
@@ -45,9 +45,9 @@ public class JWTUtil {
     return true;
   }
 
-  public static int getUserIdFromToken(String token) {
+  public static long getUserIdFromToken(String token) {
     DecodedJWT decodedJWT = validateToken(token);
     Claim userIdClaim = decodedJWT.getClaim("userId");
-    return userIdClaim.asInt();
+    return userIdClaim.asLong();
   }
 }
