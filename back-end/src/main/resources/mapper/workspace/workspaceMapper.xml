@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.thescenery.shopAssist.workspace.mapper.WorkspaceMapper">
+  <select id="getWorkspaceById" resultType="io.thescenery.shopAssist.workspace.entity.Workspace">
+    SELECT *
+    FROM t_workspace
+    WHERE id = #{id} AND is_deleted = 0
+    LIMIT 0,1
+  </select>
+  <select id="getWorkspacesByOwnerId" resultType="io.thescenery.shopAssist.workspace.entity.Workspace">
+    SELECT *
+    FROM t_workspace
+    WHERE owner_id = #{ownerId} AND is_deleted = 0
+  </select>
+</mapper>
