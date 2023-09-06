@@ -3,13 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.thescenery.shopAssist.workspace.mapper.WorkspaceMapper">
-  <select id="getWorkspaceById" resultType="io.thescenery.shopAssist.workspace.entity.Workspace">
+
+  <resultMap id="workspace" type="io.thescenery.shopAssist.workspace.entity.Workspace">
+    <result property="id" column="id"/>
+    <result property="name" column="name"/>
+    <result property="ownerId" column="owner_id"/>
+  </resultMap>
+
+
+  <select id="getWorkspaceById" resultMap="workspace">
     SELECT *
     FROM t_workspace
     WHERE id = #{id} AND is_deleted = 0
     LIMIT 0,1
   </select>
-  <select id="getWorkspacesByOwnerId" resultType="io.thescenery.shopAssist.workspace.entity.Workspace">
+  <select id="getWorkspacesByOwnerId" resultMap="workspace">
     SELECT *
     FROM t_workspace
     WHERE owner_id = #{ownerId} AND is_deleted = 0

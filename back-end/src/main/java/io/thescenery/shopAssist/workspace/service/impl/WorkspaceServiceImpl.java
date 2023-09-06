@@ -16,6 +16,10 @@ public class WorkspaceServiceImpl implements IWorkspaceService {
 
   @Override
   public Workspace getWorkspaceById(long id) {
-    return workspaceMapper.getWorkspaceById(id);
+    Workspace workspace = workspaceMapper.getWorkspaceById(id);
+    if (workspace == null) {
+      throw new RuntimeException("can not find workspace: " + id);
+    }
+    return workspace;
   }
 }
