@@ -1,5 +1,6 @@
 package io.thescenery.shopAssist.workspace.service.impl;
 
+import io.thescenery.shopAssist.workspace.dto.CreateWorkspaceDto;
 import io.thescenery.shopAssist.workspace.entity.Workspace;
 import io.thescenery.shopAssist.workspace.mapper.WorkspaceMapper;
 import io.thescenery.shopAssist.workspace.service.IWorkspaceService;
@@ -21,5 +22,15 @@ public class WorkspaceServiceImpl implements IWorkspaceService {
       throw new RuntimeException("can not find workspace: " + id);
     }
     return workspace;
+  }
+
+  @Override
+  public Workspace createWorkspace(CreateWorkspaceDto dto) {
+    long id = workspaceMapper.createWorkspace(
+        Workspace.builder().name(dto.getName()).ownerId(dto.getOwnerId()).build());
+    if (id != 0) {
+      return getWorkspaceById(id);
+    }
+    return null;
   }
 }

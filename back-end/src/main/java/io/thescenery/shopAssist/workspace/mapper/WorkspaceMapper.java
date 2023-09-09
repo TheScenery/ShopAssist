@@ -6,7 +6,10 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface WorkspaceMapper {
+
   Workspace getWorkspaceById(long id);
 
   ArrayList<Workspace> getWorkspacesByOwnerId(long ownerId);
+
+  long createWorkspace(Workspace workspace);
 }

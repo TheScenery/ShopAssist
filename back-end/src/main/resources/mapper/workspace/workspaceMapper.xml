@@ -10,6 +10,11 @@
     <result property="ownerId" column="owner_id"/>
   </resultMap>
 
+  <insert id="createWorkspace" parameterType="io.thescenery.shopAssist.workspace.entity.Workspace" useGeneratedKeys="true" keyProperty="id">
+    insert into t_workspace (name, owner_id)
+    values (#{name}, #{ownerId})
+  </insert>
+
 
   <select id="getWorkspaceById" resultMap="workspace">
     SELECT *
