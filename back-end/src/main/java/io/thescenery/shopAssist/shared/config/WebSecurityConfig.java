@@ -26,7 +26,9 @@ public class WebSecurityConfig {
   @Bean
   @Order(1)
   public SecurityFilterChain noAuthFilterChain(HttpSecurity http) throws Exception {
-    http.securityMatcher("/api/auth/login").authorizeHttpRequests(authorize -> authorize
+    http.securityMatchers(requestMatcherConfigurer -> {
+      requestMatcherConfigurer.requestMatchers("/api/auth/login");
+    }).authorizeHttpRequests(authorize -> authorize
         .anyRequest().permitAll()
     ).csrf(AbstractHttpConfigurer::disable);
 
@@ -36,7 +38,7 @@ public class WebSecurityConfig {
   @Bean
   @Order(2)
   public SecurityFilterChain authFilterChain(HttpSecurity http) throws Exception {
-    http.authorizeHttpRequests(authorize -> authorize
+    http.securityMatcher("/api/**").authorizeHttpRequests(authorize -> authorize
             .anyRequest().authenticated()
         ).csrf(AbstractHttpConfigurer::disable)
         .addFilterBefore(new JWTTokenFilter(), AuthorizationFilter.class)
