@@ -18,8 +18,8 @@ jobs:
       run: cd frontt-end
     
     - uses: actions/setup-node@v3
-        with:
-          node-version: '18.17.0'
+      with:
+        node-version: '18.17.0'
 
     - name: install dependency
       run: npm install
