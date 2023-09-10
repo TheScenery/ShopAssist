@@ -1,5 +1,6 @@
 package io.thescenery.shopAssist.user.service.impl;
 
+import io.thescenery.shopAssist.shared.exception.NotFoundException;
 import io.thescenery.shopAssist.user.entity.User;
 import io.thescenery.shopAssist.user.mapper.UserMapper;
 import io.thescenery.shopAssist.user.service.IUserService;
@@ -17,7 +18,7 @@ public class UserServiceImpl implements IUserService {
 
   private User returnNonEmptyUser(User user) {
     if (user == null) {
-      throw new RuntimeException("can not find user");
+      throw new NotFoundException("can not find user");
     }
     return user;
   }

@@ -1,6 +1,7 @@
 package io.thescenery.shopAssist.workspace.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import io.thescenery.shopAssist.shared.exception.NotFoundException;
 import io.thescenery.shopAssist.workspace.entity.Workspace;
 import io.thescenery.shopAssist.workspace.mapper.WorkspaceMapper;
 import io.thescenery.shopAssist.workspace.service.IWorkspaceService;
@@ -20,7 +21,7 @@ public class WorkspaceServiceImpl extends ServiceImpl<WorkspaceMapper, Workspace
   public Workspace getWorkspaceById(Long id) {
     Workspace workspace = workspaceMapper.getWorkspaceById(id);
     if (workspace == null) {
-      throw new RuntimeException("can not find workspace: " + id);
+      throw new NotFoundException("can not find workspace: " + id);
     }
     return workspace;
   }
