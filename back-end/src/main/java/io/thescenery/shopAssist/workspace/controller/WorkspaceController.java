@@ -3,6 +3,7 @@ package io.thescenery.shopAssist.workspace.controller;
 import io.thescenery.shopAssist.workspace.dto.CreateWorkspaceRequestDto;
 import io.thescenery.shopAssist.workspace.entity.Workspace;
 import io.thescenery.shopAssist.workspace.service.IWorkspaceService;
+import java.util.ArrayList;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,5 +35,13 @@ public class WorkspaceController {
     Long userId = (Long) authentication.getPrincipal();
     return workspaceService.createWorkspace(
         Workspace.builder().name(dto.getName()).ownerId(userId).build());
+  }
+
+  @GetMapping("/workspaces/myWorkspaces")
+  public ArrayList<Workspace> getMyWorkspaces() {
+    Authentication authentication = SecurityContextHolder.getContext()
+        .getAuthentication();
+    Long userId = (Long) authentication.getPrincipal();
+    return workspaceService.getWorkspacesByOwnerId(userId);
   }
 }

@@ -12,5 +12,5 @@ public interface WorkspaceMapper extends BaseMapper<Workspace> {
 
   ArrayList<Workspace> getWorkspacesByOwnerId(Long ownerId);
 
-  long createWorkspace(Workspace workspace);
+  Long createWorkspace(Workspace workspace);
 }

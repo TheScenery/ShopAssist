@@ -5,6 +5,7 @@ import io.thescenery.shopAssist.shared.exception.NotFoundException;
 import io.thescenery.shopAssist.workspace.entity.Workspace;
 import io.thescenery.shopAssist.workspace.mapper.WorkspaceMapper;
 import io.thescenery.shopAssist.workspace.service.IWorkspaceService;
+import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,5 +34,10 @@ public class WorkspaceServiceImpl extends ServiceImpl<WorkspaceMapper, Workspace
       return workspace;
     }
     return null;
+  }
+
+  @Override
+  public ArrayList<Workspace> getWorkspacesByOwnerId(Long ownerId) {
+    return workspaceMapper.getWorkspacesByOwnerId(ownerId);
   }
 }
