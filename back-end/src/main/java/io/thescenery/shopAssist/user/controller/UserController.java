@@ -1,7 +1,8 @@
 package io.thescenery.shopAssist.user.controller;
 
+import io.thescenery.shopAssist.user.dto.UserResponseDto;
+import io.thescenery.shopAssist.user.entity.User;
 import io.thescenery.shopAssist.user.service.IUserService;
-import io.thescenery.shopAssist.user.vo.UserInfoVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,15 +22,20 @@ public class UserController {
     this.userService = userService;
   }
 
+  private UserResponseDto userToUserResponseDto(User user) {
+    return UserResponseDto.builder().id(user.getId()).name(user.getName()).avatar(user.getAvatar())
+        .build();
+  }
+
   @GetMapping("/user/{id}")
-  UserInfoVo getUserById(@PathVariable Long id) {
-    return userService.getUserById(id);
+  UserResponseDto getUserById(@PathVariable Long id) {
+    return userToUserResponseDto(userService.getUserById(id));
   }
 
   @GetMapping("/currentUser")
-  UserInfoVo getCurrentUser() {
+  UserResponseDto getCurrentUser() {
     Authentication authentication = SecurityContextHolder.getContext()
         .getAuthentication();
-    return userService.getUserById((Long) authentication.getPrincipal());
+    return userToUserResponseDto(userService.getUserById((Long) authentication.getPrincipal()));
   }
 }
