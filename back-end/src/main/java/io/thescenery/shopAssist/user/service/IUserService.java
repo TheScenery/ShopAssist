@@ -5,7 +5,7 @@ import io.thescenery.shopAssist.user.vo.UserInfoVo;
 
 public interface IUserService {
 
-  public UserInfoVo getUserById(long id);
+  public UserInfoVo getUserById(Long id);
 
   public User getUserByEmail(String email);
 }

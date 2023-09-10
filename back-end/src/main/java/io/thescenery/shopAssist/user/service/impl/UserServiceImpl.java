@@ -29,7 +29,7 @@ public class UserServiceImpl implements IUserService {
   }
 
   @Override
-  public UserInfoVo getUserById(long id) {
+  public UserInfoVo getUserById(Long id) {
     return userEntityToUserVo(userMapper.getUserById(id));
   }
 

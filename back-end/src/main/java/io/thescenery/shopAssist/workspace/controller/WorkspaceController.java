@@ -1,6 +1,5 @@
 package io.thescenery.shopAssist.workspace.controller;
 
-import io.thescenery.shopAssist.workspace.dto.CreateWorkspaceDto;
 import io.thescenery.shopAssist.workspace.dto.CreateWorkspaceRequestDto;
 import io.thescenery.shopAssist.workspace.entity.Workspace;
 import io.thescenery.shopAssist.workspace.service.IWorkspaceService;
@@ -34,6 +33,6 @@ public class WorkspaceController {
         .getAuthentication();
     Long userId = (Long) authentication.getPrincipal();
     return workspaceService.createWorkspace(
-        CreateWorkspaceDto.builder().name(dto.getName()).ownerId(userId).build());
+        Workspace.builder().name(dto.getName()).ownerId(userId).build());
   }
 }

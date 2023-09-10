@@ -32,7 +32,7 @@ public class JWTTokenFilter extends OncePerRequestFilter {
     String token = tokenHeader.substring(tokenPrefix.length());
 
     if (JWTUtil.verifyToken(token)) {
-      long userIdFromToken = JWTUtil.getUserIdFromToken(token);
+      Long userIdFromToken = JWTUtil.getUserIdFromToken(token);
       Authentication authentication =
           new UsernamePasswordAuthenticationToken(userIdFromToken, token,
               Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));

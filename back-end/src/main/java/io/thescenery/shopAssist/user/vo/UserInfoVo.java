@@ -7,7 +7,7 @@ import lombok.Data;
 @Builder
 public class UserInfoVo {
 
-  private long id;
+  private Long id;
   private String name;
   private String avatar;
 }

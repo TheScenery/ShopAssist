@@ -1,11 +1,11 @@
 package io.thescenery.shopAssist.workspace.service;
 
-import io.thescenery.shopAssist.workspace.dto.CreateWorkspaceDto;
+import com.baomidou.mybatisplus.extension.service.IService;
 import io.thescenery.shopAssist.workspace.entity.Workspace;
 
-public interface IWorkspaceService {
+public interface IWorkspaceService extends IService<Workspace> {
 
-  public Workspace getWorkspaceById(long id);
+  public Workspace getWorkspaceById(Long id);
 
-  public Workspace createWorkspace(CreateWorkspaceDto dto);
+  public Workspace createWorkspace(Workspace workspace);
 }
