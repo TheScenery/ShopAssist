@@ -3,6 +3,8 @@ import { AuthRoutes } from '@/router/auth';
 import FullLayout from '@/layout/FullLayout.vue';
 import MainLayout from '@/layout/MainLayout.vue';
 import { SystemRoutes } from '@/router/system';
+import { WorkspaceRoute } from '@/router/workspace';
+import PortalLayout from '@/layout/PortalLayout.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,8 +27,17 @@ const router = createRouter({
     },
     {
       path: '/',
+      name: 'workspace',
+      redirect: '/workspace',
+      component: PortalLayout,
+      children: [
+        ...WorkspaceRoute
+      ]
+    },
+    {
+      path: '/app',
       component: MainLayout,
-      name: 'main',
+      name: 'app',
       redirect: '/user-management',
       children: [
         ...SystemRoutes
