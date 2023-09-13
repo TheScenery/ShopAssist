@@ -14,7 +14,7 @@ const workspaces = ref([
 
 <template>
   <div class='workspaces-container'>
-    <el-button type='primary' :icon='Edit' class='create-workspace-button'>新建应用</el-button>
+    <el-button type='primary' :icon='Edit' class='create-workspace-button'>{{ $t('workspaces.create') }}</el-button>
     <div class='workspaces-list-container'>
       <el-space wrap size='large'>
         <el-card v-for='workspace in workspaces' :key='workspace.id' class='workspace-container'>
