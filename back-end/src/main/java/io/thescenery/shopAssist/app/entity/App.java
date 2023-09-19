@@ -16,6 +16,7 @@ public class App {
   private Long id;
   private String name;
   private Long ownerId;
+  private Boolean isDeleted;
   private Date createTime;
   private Date updateTime;
 }
