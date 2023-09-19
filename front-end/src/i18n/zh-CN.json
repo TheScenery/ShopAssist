@@ -1,5 +1,8 @@
 {
   "workspaces": {
     "create": "创建工作区"
+  },
+  "app": {
+    "create": "创建APP"
   }
 }

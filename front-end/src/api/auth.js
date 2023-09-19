@@ -6,6 +6,6 @@ export const login = async (loginData) => {
 };
 
 export const getCurrentUserInfo = async () => {
-  const response = await httpClient.get('/currentUser');
+  const response = await httpClient.get('/user/current-user');
   return response.data;
 };

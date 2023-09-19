@@ -1,23 +1,22 @@
 <script setup>
-import { Edit } from '@element-plus/icons-vue'
-import { ref } from 'vue'
+import { Edit } from '@element-plus/icons-vue';
+import { onMounted, ref } from 'vue';
+import { getMyApps } from '@/api/app';
 
-const workspaces = ref([
-  { id: '1', name: 'workspace1' },
-  { id: '2', name: 'workspace2' },
-  { id: '3', name: 'workspace2' },
-  { id: '4', name: 'workspace2' },
-  { id: '5', name: 'workspace2' },
-])
+const apps = ref([]);
+
+onMounted(async () => {
+  apps.value = await getMyApps();
+});
 
 </script>
 
 <template>
   <div class='workspaces-container'>
-    <el-button type='primary' :icon='Edit' class='create-workspace-button'>{{ $t('workspaces.create') }}</el-button>
+    <el-button type='primary' :icon='Edit' class='create-workspace-button'>{{ $t('app.create') }}</el-button>
     <div class='workspaces-list-container'>
       <el-space wrap size='large'>
-        <el-card v-for='workspace in workspaces' :key='workspace.id' class='workspace-container'>
+        <el-card v-for='workspace in apps' :key='workspace.id' class='workspace-container'>
           {{ workspace.name }}
         </el-card>
       </el-space>
