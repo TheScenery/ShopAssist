@@ -32,7 +32,7 @@ public class UserController {
     return userToUserResponseDto(userService.getUserById(id));
   }
 
-  @GetMapping("/currentUser")
+  @GetMapping("/user/current-user")
   UserResponseDto getCurrentUser() {
     Authentication authentication = SecurityContextHolder.getContext()
         .getAuthentication();

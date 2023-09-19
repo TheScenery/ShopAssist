@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.thescenery.shopAssist.app.mapper.AppMapper">
-  <select id="getAppByOwnerId" resultType="io.thescenery.shopAssist.app.entity.App">
+  <select id="getAppsByOwnerId" resultType="io.thescenery.shopAssist.app.entity.App">
     SELECT *
     FROM t_app
     WHERE owner_id = #{ownerId} AND is_deleted = 0

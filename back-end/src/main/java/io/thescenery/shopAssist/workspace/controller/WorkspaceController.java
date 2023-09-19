@@ -37,7 +37,7 @@ public class WorkspaceController {
         Workspace.builder().name(dto.getName()).ownerId(userId).build());
   }
 
-  @GetMapping("/workspaces/myWorkspaces")
+  @GetMapping("/workspaces/my-workspaces")
   public ArrayList<Workspace> getMyWorkspaces() {
     Authentication authentication = SecurityContextHolder.getContext()
         .getAuthentication();

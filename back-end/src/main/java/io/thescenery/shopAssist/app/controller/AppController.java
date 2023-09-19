@@ -17,7 +17,7 @@ public class AppController {
 
   private final IAppService appService;
 
-  @GetMapping("/app/myApps")
+  @GetMapping("/app/my-apps")
   public ArrayList<App> getMyApps() {
     Authentication authentication = SecurityContextHolder.getContext()
         .getAuthentication();
