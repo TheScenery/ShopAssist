@@ -3,7 +3,8 @@
     "create": "创建工作区"
   },
   "app": {
-    "create": "创建APP"
+    "create": "创建APP",
+    "defaultAppName": "未命名应用"
   },
   "cancel": "取消",
   "confirm": "确认"

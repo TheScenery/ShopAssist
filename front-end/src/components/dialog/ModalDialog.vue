@@ -1,13 +1,24 @@
 <script setup>
 
-defineProps({
+import { computed } from 'vue';
+
+const props = defineProps({
   modelValue: Boolean,
   title: String
 });
 const emit = defineEmits(['update:modelValue', 'onOk']);
 
+const visible = computed({
+  get () {
+    return props.modelValue;
+  },
+  set (value) {
+    emit('update:modelValue', value);
+  }
+});
+
 const onClose = () => {
-  emit('update:modelValue', false);
+  visible.value = false;
 };
 
 const onConfirm = () => {
@@ -18,7 +29,7 @@ const onConfirm = () => {
 </script>
 
 <template>
-  <el-dialog :visivle='modelValue' :title='title'>
+  <el-dialog v-model='visible' :title='title' :close-on-click-modal='false' :close-on-press-escape='false'>
     <slot></slot>
     <template #footer>
       <span class='dialog-footer'>
