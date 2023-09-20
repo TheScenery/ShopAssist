@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue';
-import CustomComponent from '@/test-components/CustomComponent.vue';
 import ModalDialog from '@/components/dialog/ModalDialog.vue';
 
 const text = ref(true);
