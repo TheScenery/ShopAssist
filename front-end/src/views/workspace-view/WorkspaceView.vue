@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import { getMyApps } from '@/api/app';
+import { createApp, getMyApps } from '@/api/app';
 import CreateAPP from '@/biz-components/create-app/CreateAPP.vue';
 
 const apps = ref([]);
@@ -9,15 +9,16 @@ onMounted(async () => {
   apps.value = await getMyApps();
 });
 
-const createAPP = (data) => {
-  console.log(data);
+const onCreateAPP = async (data) => {
+  const resp = await createApp({ name: data })
+  console.log("create a new app, app id is: ", resp.id);
 };
 
 </script>
 
 <template>
   <div class='workspaces-container'>
-    <CreateAPP @createAPP='createAPP' />
+    <CreateAPP @createAPP='onCreateAPP' />
     <div class='workspaces-list-container'>
       <el-space wrap size='large'>
         <el-card v-for='workspace in apps' :key='workspace.id' class='workspace-container'>
