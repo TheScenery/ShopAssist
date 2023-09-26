@@ -6,4 +6,5 @@ import java.util.ArrayList;
 
 public interface IAppService extends IService<App> {
   public ArrayList<App> getAppsByOwnerId(Long ownerId);
+  public void createApp(App app);
 }

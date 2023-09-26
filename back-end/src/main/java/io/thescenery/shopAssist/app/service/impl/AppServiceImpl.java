@@ -15,6 +15,11 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements IAppS
   private final AppMapper appMapper;
 
   @Override
+  public void createApp(App app) {
+    appMapper.insert(app);
+  }
+
+  @Override
   public ArrayList<App> getAppsByOwnerId(Long ownerId) {
     return appMapper.getAppsByOwnerId(ownerId);
   }
