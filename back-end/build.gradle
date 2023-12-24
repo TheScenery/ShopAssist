@@ -20,6 +20,9 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter
     implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.4.1'
+    // https://mvnrepository.com/artifact/org.mybatis/mybatis-spring
+    implementation 'org.mybatis:mybatis-spring:3.0.3'
+
 
 
     // https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
